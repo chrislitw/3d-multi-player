@@ -2,7 +2,7 @@
 import { createScene } from './createScene.ts'
 import { ref, onMounted } from 'vue'
 
-const bjsCanvas = ref<HTMLCanvasElement | null>(null)
+const bjsCanvas = ref<HTMLCanvasElement>()
 onMounted(async () => {
   if (bjsCanvas.value) {
     await createScene(bjsCanvas.value)

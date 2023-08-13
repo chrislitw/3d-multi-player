@@ -8,7 +8,7 @@ import {
   Color3,
   HemisphericLight
 } from '@babylonjs/core'
-const createScene = async (canvas: Scene) => {
+const createScene = async (canvas: HTMLCanvasElement) => {
   // const engine = new Engine(canvas)
   const engine = new WebGPUEngine(canvas)
   await engine.initAsync()
