@@ -7,6 +7,15 @@ const bjsCanvas = ref<HTMLCanvasElement | null>(null)
 onMounted(async () => {
   if (bjsCanvas.value) {
     await createScene(bjsCanvas.value)
+    const wss = new WebSocket('ws://localhost:8080')
+
+    wss.onopen = (e) => {
+      console.log('connected to websocket server')
+    }
+
+    wss.onmessage = (e) => {
+      console.log('onmessage', e.data)
+    }
   }
 })
 </script>
@@ -14,3 +23,4 @@ onMounted(async () => {
   <canvas ref="bjsCanvas" width="500" height="500" />
 </template>
 <style scoped></style>
+./createScene.js

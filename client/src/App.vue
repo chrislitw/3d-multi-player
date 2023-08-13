@@ -1,11 +1,11 @@
 <script setup lang="ts">
 import { RouterView } from 'vue-router'
-import BabylonScene from './babylon/createScene.vue'
+import Scene from './scene/createScene.vue'
 </script>
 
 <template>
   <header>
-    <BabylonScene></BabylonScene>
+    <Scene></Scene>
   </header>
 
   <RouterView />
@@ -74,3 +74,4 @@ nav a:first-of-type {
   }
 }
 </style>
+./scene/createScene.vue
