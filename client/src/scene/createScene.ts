@@ -1,4 +1,5 @@
 import {
+  Engine,
   WebGPUEngine,
   Scene,
   FreeCamera,
@@ -25,9 +26,14 @@ const createGround = (scene: Scene): typeof ground => {
   return ground
 }
 const createScene = async (canvas: HTMLCanvasElement) => {
-  // const engine = new Engine(canvas)
-  const engine = new WebGPUEngine(canvas)
-  await engine.initAsync()
+  let engine: any
+  if (!navigator.gpu) {
+    engine = new Engine(canvas)
+  } else {
+    engine = new WebGPUEngine(canvas)
+    await engine.initAsync()
+  }
+
   const scene = new Scene(engine)
 
   const camera = new FreeCamera('camera', new Vector3(0, 5, -10), scene)
