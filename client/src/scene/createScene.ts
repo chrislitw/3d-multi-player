@@ -21,9 +21,14 @@ const createScene = async (canvas: HTMLCanvasElement) => {
   new HemisphericLight('light', Vector3.Up(), scene)
 
   const box = MeshBuilder.CreateBox('box', { size: 2 }, scene)
-  const material = new StandardMaterial('box-material', scene)
-  material.diffuseColor = Color3.Blue()
-  box.material = material
+  const m1 = new StandardMaterial('box-material', scene)
+  m1.diffuseColor = Color3.Green()
+  box.material = m1
+
+  const plane = MeshBuilder.CreateGround('ground', { width: 10, height: 10 }, scene)
+  const m2 = new StandardMaterial('box-material', scene)
+  m2.diffuseColor = Color3.Blue()
+  plane.material = m2
 
   engine.runRenderLoop(() => {
     scene.render()
