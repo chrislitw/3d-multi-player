@@ -1,12 +1,15 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { createScene } from './scene.ts'
+import { ref, onMounted } from 'vue'
+import { ThreeScene } from './scene.ts'
 
-onMounted(() => createScene())
+const three = ref<HTMLCanvasElement | null>(null)
+onMounted(() => {
+  if (three.value !== null) new ThreeScene(three.value)
+})
 </script>
 <template>
   <div>
-    <canvas id="three"></canvas>
+    <canvas ref="three"></canvas>
   </div>
 </template>
 <style lang="css" scoped></style>
